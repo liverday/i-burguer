@@ -1,0 +1,12 @@
+<ion-row margin-bottom justify-content-center class="burguer-item-container">
+  <ion-col size="8" padding>
+    <ion-text class="heading-name">
+      {{burguer.name}}
+    </ion-text>
+  </ion-col>
+  <ion-col no-padding>
+    <ion-thumbnail *ngIf="burguer.img">
+      <ion-img [src]="burguer.img" class="burguer-item__img"></ion-img>
+    </ion-thumbnail>
+  </ion-col>
+</ion-row>

@@ -1,0 +1,24 @@
+$grey: #989aa2;
+
+.burguer-item-container {
+    position: relative;
+    box-shadow: 2px 2px 7px $grey;
+    min-height: 4rem;
+    transition: 0.2s ease-in;
+    overflow: hidden;
+    &:hover {
+        box-shadow: 4px 4px 10px darken($grey, 10%);
+    }
+
+    .heading-name {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .burguer-item__img {
+        position: absolute;
+        transform: scale(1.3);
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+}

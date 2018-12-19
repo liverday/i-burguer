@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add a burguer</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dissmissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #burguerForm="ngForm" (ngSubmit)="onFormSubmit()" margin-top>
+    <ion-item no-margin no-padding>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" required placeholder="Name of the burguer" [(ngModel)]="burguer.name" name="name"></ion-input>
+    </ion-item>
+    <ion-item no-margin no-padding>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" required placeholder="Description" [(ngModel)]="burguer.description" name="name"></ion-input>
+    </ion-item>
+    <ion-button margin-top expand="full" [disabled]="!burguer.name || !burguer.description" color="primary" type="submit">Add
+      burguer</ion-button>
+  </form>
+</ion-content>

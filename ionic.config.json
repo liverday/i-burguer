@@ -1,5 +1,7 @@
 {
   "name": "i-burguer-client",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
