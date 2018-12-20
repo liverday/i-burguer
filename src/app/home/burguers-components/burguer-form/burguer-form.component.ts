@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Burguer } from '../../interfaces/burguer';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { LoadingController, ModalController, Input } from '@ionic/angular';
 import { HomeService } from '../../home.service';
 
 @Component({
@@ -10,7 +10,12 @@ import { HomeService } from '../../home.service';
 })
 export class BurguerFormComponent implements OnInit {
   private burguer: Burguer = {};
-  constructor(private loadingController: LoadingController, private service: HomeService, public modalController: ModalController) { }
+  constructor(
+    private loadingController: LoadingController,
+    private service: HomeService,
+    public modalController: ModalController
+  ) { }
+
 
   ngOnInit() {
   }
@@ -27,6 +32,25 @@ export class BurguerFormComponent implements OnInit {
         loading.dismiss();
         await this.modalController.dismiss(this.burguer);
       });
+  }
+
+  selectImage = (inputFile: HTMLInputElement): void => inputFile.click();
+
+  fileChange = (files: FileList): void => {
+    let file = files[0];
+
+    if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload = this.handleFileRead;
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  handleFileRead = (event): void => {
+    debugger;
+    let binaryString = event.target.result;
+    this.burguer.img = "data:image/png;base64," + btoa(binaryString);
   }
 
   dissmissModal = async (): Promise<void> => {
