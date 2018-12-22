@@ -48,9 +48,8 @@ export class BurguerFormComponent implements OnInit {
   }
 
   handleFileRead = (event): void => {
-    debugger;
     let binaryString = event.target.result;
-    this.burguer.img = "data:image/png;base64," + btoa(binaryString);
+    this.burguer.img = `data:image/png;base64,${btoa(binaryString)}`;
   }
 
   dissmissModal = async (): Promise<void> => {

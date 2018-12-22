@@ -22,7 +22,6 @@
 
     <input #inputFile hidden type="file" (change)="fileChange($event.target.files)">
     <ion-button color="secondary" margin-top expand="full" class="pointer" (click)="selectImage(inputFile)" type="button">
-
       <ion-icon color="light" name="camera"></ion-icon>
     </ion-button>
     <ion-button expand="full" [disabled]="!burguer.name || !burguer.description || !burguer.img" color="primary" type="submit">Add

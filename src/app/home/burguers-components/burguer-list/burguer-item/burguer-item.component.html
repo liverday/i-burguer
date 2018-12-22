@@ -1,12 +1,19 @@
-<ion-row margin-bottom justify-content-center class="burguer-item-container">
-  <ion-col size="8" padding>
-    <ion-text class="heading-name">
-      {{burguer.name}}
-    </ion-text>
-  </ion-col>
-  <ion-col no-padding>
-    <ion-thumbnail *ngIf="burguer.img">
-      <ion-img [src]="burguer.img" class="burguer-item__img"></ion-img>
-    </ion-thumbnail>
-  </ion-col>
-</ion-row>
+<div margin-bottom>
+  <ion-row justify-content-center class="burguer-item-container">
+    <ion-col size="8" padding (click)="toggleExpanded()">
+      <ion-text class="heading-name">
+        {{burguer.name | uppercase}}
+      </ion-text>
+    </ion-col>
+    <ion-col size="4" no-padding (click)="toggleExpanded()">
+      <ion-thumbnail *ngIf="burguer.img">
+        <ion-img [src]="burguer.img" class="burguer-item__img"></ion-img>
+      </ion-thumbnail>
+    </ion-col>
+  </ion-row>
+  <ion-row class="burguer-item-expanded-container" [@openClose]="isExpanded ? 'open' : 'closed'">
+    <ion-col size="12">
+      <ion-text>{{burguer.description}}</ion-text>
+    </ion-col>
+  </ion-row>
+</div>

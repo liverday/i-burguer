@@ -5,6 +5,7 @@ import { LoadingController, ModalController } from '@ionic/angular';
 import { HomeService } from './home.service';
 import { BurguerFormComponent } from './burguers-components/burguer-form/burguer-form.component';
 import { OverlayEventDetail } from '@ionic/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -13,14 +14,13 @@ import { OverlayEventDetail } from '@ionic/core';
 })
 export class HomePage {
   burguers: Burguer[] = [];
-  burguer: Burguer = {};
   showForm: boolean = false;
-  constructor(private route: ActivatedRoute, public modalController: ModalController, private loadingController: LoadingController, private service: HomeService) {
-    this.burguers = route.snapshot.data.burguers;
+  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, public modalController: ModalController, private loadingController: LoadingController, private service: HomeService) {
+    this.burguers = this.route.snapshot.data.burguers;
   }
 
   openModalForm = async (): Promise<void> => {
-    const modal: HTMLIonModalElement  = await this.modalController.create({
+    const modal: HTMLIonModalElement = await this.modalController.create({
       component: BurguerFormComponent
     })
 
@@ -28,7 +28,7 @@ export class HomePage {
       if (result.data) {
         this.burguers = this.burguers.concat(result.data);
       }
-    }); 
+    });
 
     await modal.present();
   }

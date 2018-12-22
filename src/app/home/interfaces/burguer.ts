@@ -1,5 +1,5 @@
 export class Burguer {
     name?: string;
-    img?: string;
+    img?: any;
     description?: string;
 }
