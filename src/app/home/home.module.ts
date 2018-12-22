@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
@@ -11,11 +12,15 @@ import { BurguerListComponent } from './burguers-components/burguer-list/burguer
 import { BurguerItemComponent } from './burguers-components/burguer-list/burguer-item/burguer-item.component';
 import { BurguerFormComponent } from './burguers-components/burguer-form/burguer-form.component';
 
+import { BrMaskerModule } from 'br-mask';
+
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     IonicModule,
+    BrMaskerModule,
     HttpClientModule,
     RouterModule.forChild([
       {

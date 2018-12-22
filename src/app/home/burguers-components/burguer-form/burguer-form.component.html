@@ -10,21 +10,26 @@
 </ion-header>
 
 <ion-content padding>
-  <form #burguerForm="ngForm" (ngSubmit)="onFormSubmit()" margin-top>
+  <form [formGroup]="form" (ngSubmit)="onFormSubmit()" margin-top>
     <ion-item no-margin no-padding>
       <ion-label>Name</ion-label>
-      <ion-input type="text" required placeholder="Name of the burguer" [(ngModel)]="burguer.name" name="name"></ion-input>
+      <ion-input type="text" placeholder="Name of the burguer" formControlName="name"></ion-input>
     </ion-item>
     <ion-item no-margin no-padding>
       <ion-label>Description</ion-label>
-      <ion-input type="text" required placeholder="Description" [(ngModel)]="burguer.description" name="name"></ion-input>
+      <ion-input type="text" placeholder="Description" formControlName="description"></ion-input>
     </ion-item>
-
+    <ion-item no-margin no-padding>
+      <ion-label>Price</ion-label>
+      <ion-input formControlName="price" [brmasker]="{form: form.get('price'), money: true, thousand: ',',  numberAndTousand: true, decimalCaracter: '.', decimal: '2'}"
+        placeholder="$ 0.00"></ion-input>
+    </ion-item>
     <input #inputFile hidden type="file" (change)="fileChange($event.target.files)">
     <ion-button color="secondary" margin-top expand="full" class="pointer" (click)="selectImage(inputFile)" type="button">
       <ion-icon color="light" name="camera"></ion-icon>
     </ion-button>
-    <ion-button expand="full" [disabled]="!burguer.name || !burguer.description || !burguer.img" color="primary" type="submit">Add
+
+    <ion-button expand="full" [disabled]="!isFormValid" color="primary" type="submit">Add
       burguer</ion-button>
   </form>
 </ion-content>

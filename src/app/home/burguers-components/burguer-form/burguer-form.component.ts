@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Burguer } from '../../interfaces/burguer';
 import { LoadingController, ModalController, Input } from '@ionic/angular';
 import { HomeService } from '../../home.service';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-burguer-form',
@@ -13,20 +14,37 @@ export class BurguerFormComponent implements OnInit {
   constructor(
     private loadingController: LoadingController,
     private service: HomeService,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private fb: FormBuilder
   ) { }
 
+  form = this.fb.group({
+    name: ['', Validators.required],
+    description: [''],
+    img: [null, Validators.required],
+    price: ['', Validators.required]
+  })
+
+  get isFormValid() {
+    return !this.form.invalid
+  }
 
   ngOnInit() {
   }
 
   onFormSubmit = async (): Promise<void> => {
+    let burguer = { ...this.form.value }
+    burguer.price = parseFloat(burguer.price)
+    this.burguer = { ...burguer };
+
+    debugger;
     const loading = await this.loadingController.create({
       message: 'Please wait...',
       spinner: 'crescent',
       translucent: true
     })
     loading.present();
+
     this.service.addBurguer(this.burguer)
       .subscribe(async (_) => {
         loading.dismiss();
@@ -49,10 +67,13 @@ export class BurguerFormComponent implements OnInit {
 
   handleFileRead = (event): void => {
     let binaryString = event.target.result;
-    this.burguer.img = `data:image/png;base64,${btoa(binaryString)}`;
+    this.form.patchValue({
+      img: `data:image/png;base64,${btoa(binaryString)}`
+    })
   }
 
   dissmissModal = async (): Promise<void> => {
     await this.modalController.dismiss(null)
   }
 }
+

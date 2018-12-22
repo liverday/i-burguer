@@ -1,10 +1,10 @@
 $grey: #989aa2;
-$primary: #3880ff;
+$red: #d33939;
 
 .burguer-item-container {
     position: relative;
-    box-shadow: 2px 2px 7px $grey;
-    min-height: 4rem;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+    min-height: 5rem;
     transition: 0.2s ease-in;
     overflow: hidden;
 
@@ -19,8 +19,19 @@ $primary: #3880ff;
         overflow: hidden;
         box-sizing: border-box;
     }
+
+    .heading-price {
+        margin-top: 5px;
+        font-weight: bold;
+        color: darken($red, 10%);
+    }
 }
 
 .burguer-item-expanded-container {
     border-radius: 0 0 5px 5px;    
+    background-color: $red;
+
+    ion-text {
+        color: white;
+    }
 }
