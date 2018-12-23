@@ -37,7 +37,6 @@ export class BurguerFormComponent implements OnInit {
     burguer.price = parseFloat(burguer.price)
     this.burguer = { ...burguer };
 
-    debugger;
     const loading = await this.loadingController.create({
       message: 'Please wait...',
       spinner: 'crescent',

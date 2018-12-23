@@ -1,9 +1,11 @@
 <div margin-bottom>
   <ion-row justify-content-center class="burguer-item-container">
     <ion-col size="8" padding (click)="toggleExpanded()">
-      <ion-text class="heading-name">
-        {{burguer.name | uppercase}}
-      </ion-text>
+      <div>
+        <ion-text class="heading-name">
+          {{burguer.name | uppercase}}
+        </ion-text>
+      </div>  
       <ion-text class="heading-price">
         {{burguer.price | currency: 'USD' }}
       </ion-text>
