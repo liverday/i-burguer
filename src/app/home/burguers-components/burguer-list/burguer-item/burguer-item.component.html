@@ -5,7 +5,7 @@
         <ion-text class="heading-name">
           {{burguer.name | uppercase}}
         </ion-text>
-      </div>  
+      </div>
       <ion-text class="heading-price">
         {{burguer.price | currency: 'USD' }}
       </ion-text>
@@ -17,8 +17,15 @@
     </ion-col>
   </ion-row>
   <ion-row class="burguer-item-expanded-container" [@openClose]="isExpanded ? 'open' : 'closed'">
-    <ion-col size="12">
+    <ion-col size="12" padding>
       <ion-text>{{burguer.description}}</ion-text>
+    </ion-col>
+    <ion-col size="12" align-self-end>
+      <div class="display-flex" justify-content-end>
+        <ion-icon class="action-icons" name="trash"></ion-icon>
+        <ion-icon class="action-icons" name="create"></ion-icon>
+        <ion-icon class="action-icons" name="cart"></ion-icon>
+      </div>
     </ion-col>
   </ion-row>
 </div>

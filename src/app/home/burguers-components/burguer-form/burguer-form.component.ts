@@ -33,7 +33,7 @@ export class BurguerFormComponent implements OnInit {
   }
 
   onFormSubmit = async (): Promise<void> => {
-    let burguer = { ...this.form.value }
+    let burguer = { ...this.form.value };
     burguer.price = parseFloat(burguer.price)
     this.burguer = { ...burguer };
 
