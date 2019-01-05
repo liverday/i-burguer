@@ -1,0 +1,15 @@
+<ion-tabs>
+  <ion-tab tab="cart"></ion-tab>
+  <ion-tab tab="burguers"></ion-tab>    
+
+  <ion-router-outlet></ion-router-outlet>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="cart" routerLink="/tabs/cart">
+      <ion-icon name="cart"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="burguers" routerLink="/tabs/burguers">
+      <ion-icon name="cash"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
