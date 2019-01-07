@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TabsPageComponent } from './tabs-page/tabs-page.component';
+import { CartCountResolver } from '../cart/cart.service';
 
 const routes: Routes = [
     {
@@ -25,7 +26,10 @@ const routes: Routes = [
                     }
                 ]
             }
-        ]
+        ], 
+        resolve: {
+            cartCount: CartCountResolver
+        }
     },
     {
         path: '',

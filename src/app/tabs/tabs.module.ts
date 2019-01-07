@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TabsPageComponent } from './tabs-page/tabs-page.component';
 import { TabsRoutingModule } from './tabs-routing.module';
 import { IonicModule } from '@ionic/angular';
-import { BurguerEmitterService } from '../burguers/burguers.service';
+import { CartCountResolver, CartService } from '../cart/cart.service';
 
 @NgModule({
   declarations: [TabsPageComponent],
@@ -11,6 +11,7 @@ import { BurguerEmitterService } from '../burguers/burguers.service';
     CommonModule, 
     TabsRoutingModule, 
     IonicModule
-  ]
+  ], 
+  providers: [CartCountResolver, CartService]
 })
 export class TabsModule { }

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Burguer } from './interfaces/burguer';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
-export class HomeService {
+export class BurguersService {
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -26,7 +26,7 @@ export class HomeService {
 @Injectable()
 export class BurguersResolver implements Resolve<Burguer[]> {
 
-    constructor(private service: HomeService) {
+    constructor(private service: BurguersService) {
 
     }
 
@@ -46,5 +46,13 @@ export class BurguersResolver implements Resolve<Burguer[]> {
             }
         })
     }
+}
 
+@Injectable()
+export class BurguerEmitterService {
+
+    private cartAddedCount = new Subject<void>();
+    cartAddedCount$ = this.cartAddedCount.asObservable();
+
+    onCartAddedCount = (): void => this.cartAddedCount.next();
 }

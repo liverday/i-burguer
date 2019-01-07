@@ -6,11 +6,11 @@
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="cart" routerLink="/tabs/cart">
-      <ion-icon name="cart"></ion-icon>
-      <ion-badge padding-left *ngIf="cartCount > 0">{{cartCount}}</ion-badge>
+      <ion-icon margin-end src="assets/custom-ion-icons/shopping-cart.svg"></ion-icon>
+      <ion-badge *ngIf="cartCount > 0">{{cartCount}}</ion-badge>
     </ion-tab-button>
     <ion-tab-button tab="burguers" routerLink="/tabs/burguers">
-      <ion-icon name="cash"></ion-icon>
+      <ion-icon src="assets/custom-ion-icons/lunch.svg"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

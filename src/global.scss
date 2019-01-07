@@ -19,10 +19,36 @@
     margin-left: 0.5rem;
 }
 
+.margin-right-slim {
+    margin-right: 0.5rem;
+}
+
+.margin-h-slim {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.margin-v-slim {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
 .padding-slim {
     padding: 0.5rem;
 }
 
 .margin-slim {
     margin: 0.5rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.no-padding-top {
+    padding-top: 0;
+}
+
+.padding-v-no-top {
+    padding: 0 1rem 1rem 1rem;
 }

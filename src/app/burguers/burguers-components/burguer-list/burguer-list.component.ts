@@ -15,4 +15,5 @@ export class BurguerListComponent implements OnInit {
   ngOnInit() {
   }
 
+  onToggleChange = (burguer: Burguer): void => this.burguers.filter(item => item.id !== burguer.id).forEach(burguer => burguer.isExpanded = false)
 }

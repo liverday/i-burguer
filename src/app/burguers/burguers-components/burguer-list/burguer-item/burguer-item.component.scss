@@ -1,5 +1,4 @@
-$grey: #989aa2;
-$red: #d33939;
+@import '~src/theme/variables';
 
 .burguer-item-container {
     position: relative;
@@ -16,7 +15,7 @@ $red: #d33939;
 
     .burguer-item__img {
         position: absolute;
-        transform: scale(1.3);
+        transform: scale(1.15);
         overflow: hidden;
         box-sizing: border-box;
     }
@@ -34,7 +33,7 @@ $red: #d33939;
     color: white;
 
     .action-icons {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         font-weight: bold;
         padding: 0.5rem;
         transition: 0.15s ease-out;

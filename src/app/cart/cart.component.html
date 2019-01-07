@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Your Cart
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-text *ngIf="cart.items.length === 0">
+    <h2>Your cart is empty, buy something!</h2>
+  </ion-text>
+
+  <cart-item *ngFor="let item of cart.items" [cartItem]="item" (onRemove)="handleItemRemove($event)" (onQttyChange)="calculateTotal()" ></cart-item>
+</ion-content>
+
+<ion-footer no-shadow>
+  <ion-text>
+    <h3 class="bold" text-end padding-end>
+      Total: {{cart.total | currency: 'USD'}}
+    </h3>
+  </ion-text>
+  <ion-button class="padding-v-no-top" expand="full" color="danger">
+    CHECKOUT
+  </ion-button>
+</ion-footer>
