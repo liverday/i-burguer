@@ -10,7 +10,7 @@ export class BurguersService {
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    baseUrl: string = 'http://localhost:3000/api/burguers';
+    baseUrl: string = 'http://localhost:8100/api/burguers';
 
     constructor(private http: HttpClient) { }
 
