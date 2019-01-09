@@ -12,7 +12,6 @@ import { TabsModule } from './tabs/tabs.module';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
   imports: [BrowserModule, BrowserAnimationsModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule, TabsModule],
   providers: [
     StatusBar,

@@ -4,7 +4,7 @@
       <ion-text class="cart-item__title">{{cartItem.name}}</ion-text>
     </div>
     <ion-thumbnail class="cart-item__image-container">
-      <ion-img *ngIf="cartItem.img" class=".cart-item__image" [src]="cartItem.img"></ion-img>
+      <ion-img *ngIf="cartItem.img" class=".cart-item__image" src="{{cartItem.img}}"></ion-img>
     </ion-thumbnail>
     <div padding>
       <ion-text>

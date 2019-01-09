@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^7.1.1",
+    "@angular/animations": "~7.0.0",
     "@angular/common": "~7.0.0",
     "@angular/core": "~7.0.0",
     "@angular/forms": "~7.0.0",
@@ -21,10 +21,10 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
-    "@ionic-native/camera": "^5.0.0-beta.22",
+    "@ionic-native/camera": "5.0.0-beta.21",
     "@ionic-native/core": "5.0.0-beta.21",
-    "@ionic-native/file": "^5.0.0-beta.22",
-    "@ionic-native/ionic-webview": "^5.0.0-beta.22",
+    "@ionic-native/file": "5.0.0-beta.21",
+    "@ionic-native/ionic-webview": "5.0.0-beta.21",
     "@ionic-native/splash-screen": "5.0.0-beta.21",
     "@ionic-native/status-bar": "5.0.0-beta.21",
     "@ionic/angular": "4.0.0-beta.16",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.10.0",
-    "@angular-devkit/build-angular": "^0.11.4",
+    "@angular-devkit/build-angular": "^0.12.0",
     "@angular-devkit/core": "~7.0.0",
     "@angular-devkit/schematics": "~7.0.0",
     "@angular/cli": "~7.0.0",
@@ -81,6 +81,9 @@
       "cordova-plugin-camera": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-file": {}
-    }
+    },
+    "platforms": [
+      "android"
+    ]
   }
 }
