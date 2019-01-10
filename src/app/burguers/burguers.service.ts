@@ -4,17 +4,21 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Platform } from '@ionic/angular';
 
 @Injectable()
 export class BurguersService {
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    baseUrl: string = 'http://localhost:8100/api/burguers';
+    baseUrl: string = '/api/burguers';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private platform: Platform) { }
 
     getBurguers(): Observable<Burguer[]> {
+        if (!this.platform.is('desktop')) {
+            this.baseUrl = 'http://192.168.1.5:3000/api/burguers';
+        }
         return this.http.get<Burguer[]>(this.baseUrl, this.httpOptions);
     }
 
