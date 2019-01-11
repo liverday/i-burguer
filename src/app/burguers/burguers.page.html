@@ -3,8 +3,12 @@
     <ion-title>
       Burguers
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
+<ion-toolbar>
+  <ion-searchbar animated [debounce]="500" [(ngModel)]="searchText" (ionChange)="onSearchBarChanged()"></ion-searchbar>
+</ion-toolbar>
 
 <ion-content padding>
   <burguer-list [burguers]="burguers"></burguer-list>

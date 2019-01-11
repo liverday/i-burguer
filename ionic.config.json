@@ -4,11 +4,6 @@
     "cordova": {}
   },
   "typescript": true,
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://192.168.1.5:3000"
-    }
-  ],
+  "defaultBrowser": "google chrome",
   "type": "angular"
 }
