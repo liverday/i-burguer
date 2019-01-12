@@ -1,23 +1,22 @@
 @import '~src/theme/variables';
 
 .burguer-item-container {
-    position: relative;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
-    min-height: 6rem;
+    min-height: 7rem;
     transition: 0.2s ease-in;
     overflow: hidden;
 
     .heading-name {
-        font-weight: 500;
-        font-size: 1.25rem;
+        font-weight: 600;
+        font-size: 1.05rem;
         color: darken($grey, 15%);
     }
 
     .burguer-item__img {
         position: absolute;
         transform: scale(1.15);
-        overflow: hidden;
         box-sizing: border-box;
+        top: 3px;
     }
 
     .heading-price {
@@ -25,22 +24,22 @@
         font-weight: bold;
         color: darken($red, 10%);
     }
+
+    .burguer-badge {
+        position: absolute;
+        right: left;
+        bottom: 0;
+    }
 }
 
 .burguer-item-expanded-container {
     border-radius: 0 0 5px 5px;    
-    background-color: $red; 
-    color: white;
-
+    
     .action-icons {
         font-size: 1.5rem;
         font-weight: bold;
         padding: 0.5rem;
         transition: 0.15s ease-out;
         border-radius: 50%;
-        &:hover {
-            
-            background-color: darken($red, 20%);
-        }
     }
 }

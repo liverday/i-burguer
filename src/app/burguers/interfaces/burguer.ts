@@ -5,4 +5,5 @@ export class Burguer {
     price?: number;
     description?: string;
     isExpanded?: boolean;
+    category?: any;
 }

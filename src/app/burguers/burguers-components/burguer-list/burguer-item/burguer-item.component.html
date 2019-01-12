@@ -1,6 +1,6 @@
 <div margin-bottom>
   <ion-row justify-content-center class="burguer-item-container">
-    <ion-col size="7" padding (click)="toggleExpanded()">
+    <ion-col size="7" class="position-relative " padding (click)="toggleExpanded()">
       <div>
         <ion-text class="heading-name">
           {{burguer.name | uppercase}}
@@ -9,14 +9,21 @@
       <ion-text class="heading-price">
         {{burguer.price | currency: 'USD' }}
       </ion-text>
+      <div *ngIf="burguer.category" class="burguer-badge padding-tiny" [style.background-color]="burguer.category.color">
+        <span [style.color]="burguer.category.font_color" [style.font-size.rem]="0.8" [style.font-weight]="'bold'">{{
+          burguer.category.ds_category }}</span>
+      </div>
     </ion-col>
-    <ion-col size="5" no-padding (click)="toggleExpanded()">
+    <ion-col size="5" no-padding class="position-relative overflow-hidden" (click)="toggleExpanded()">
       <ion-thumbnail *ngIf="burguer.img">
         <ion-img src="{{burguer.img}}" class="burguer-item__img"></ion-img>
       </ion-thumbnail>
     </ion-col>
   </ion-row>
-  <ion-row class="burguer-item-expanded-container" [@openClose]="burguer.isExpanded ? 'open' : 'closed'">
+  <ion-row class="burguer-item-expanded-container" 
+    [style.color]="burguer.category.font_color" 
+    [style.background-color]="burguer.category.color"
+    [@openClose]="burguer.isExpanded ? 'open' : 'closed'">
     <ion-col size="12" padding>
       <ion-text>{{burguer.description}}</ion-text>
     </ion-col>

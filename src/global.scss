@@ -37,6 +37,20 @@
     padding: 0.5rem;
 }
 
+.padding-tiny {
+    padding: 0.25rem;
+}
+
+.padding-v {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.padding-h {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .margin-slim {
     margin: 0.5rem;
 }
@@ -51,4 +65,13 @@
 
 .padding-v-no-top {
     padding: 0 1rem 1rem 1rem;
+}
+
+.position-relative {
+    position: relative;
+}
+
+
+.overflow-hidden {
+    overflow: hidden;
 }
