@@ -1,4 +1,5 @@
 import { URLSearchParams } from '@angular/http';
+import { environment } from './environments/environment';
 
 class Configuration {
     private static _instance: Configuration;
@@ -11,7 +12,7 @@ class Configuration {
     }
 
     getApiAddress(): string {
-        return `https://i-burguer-api.herokuapp.com`
+        return environment.apiUrl;
     }
 
     urlencode(data: Object): string {

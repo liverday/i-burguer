@@ -10,6 +10,12 @@
   <ion-searchbar animated [debounce]="500" [(ngModel)]="searchText" (ionChange)="onSearchBarChanged()"></ion-searchbar>
 </ion-toolbar>
 
+
+
 <ion-content padding>
   <burguer-list [burguers]="burguers"></burguer-list>
+
+  <ion-infinite-scroll #infiniteScroll text-center (ionInfinite)="loadMoreData()">
+    <ion-spinner name="crescent" color="danger"></ion-spinner>
+  </ion-infinite-scroll>
 </ion-content>
