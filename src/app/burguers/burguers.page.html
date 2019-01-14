@@ -7,6 +7,11 @@
   </ion-toolbar>
 </ion-header>
 <ion-toolbar>
+  <ion-buttons slot="primary">
+    <ion-button (click)="openFilterModal()">
+      <ion-icon src="assets/custom-ion-icons/filter.svg"></ion-icon>
+    </ion-button>
+  </ion-buttons>
   <ion-searchbar animated [debounce]="500" [(ngModel)]="searchText" (ionChange)="onSearchBarChanged()"></ion-searchbar>
 </ion-toolbar>
 

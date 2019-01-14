@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Config your filter
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="onFilterSubmit()">
+    <ion-item no-padding>
+      <ion-label>By Category</ion-label>
+      <ion-select formControlName="category" multiple="true" cancelText="Nah" okText="Okay!" required>
+        <ion-select-option *ngFor="let category of categories" [style.background-color]="category.color" [value]="category.id_category">{{category.ds_category}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button margin-top color="light" [disabled]="!filter || !filter.category" (click)="removeFilter()" expand="full">CLEAR FILTER</ion-button>
+    <ion-button margin-top color="danger" type="submit" [disabled]="!form.valid" expand="full">SUBMIT</ion-button>
+  </form>
+</ion-content>

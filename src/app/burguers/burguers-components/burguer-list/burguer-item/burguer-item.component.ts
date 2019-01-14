@@ -7,7 +7,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { BurguerEmitterService } from '../../../burguers.service';
 import { CartService } from '../../../../cart/cart.service';
 
@@ -35,7 +35,11 @@ export class BurguerItemComponent implements OnInit {
   @Input() burguer: Burguer
   @Output() toggleChange: EventEmitter<Burguer> = new EventEmitter<Burguer>();
 
-  constructor(public alertController: AlertController, private burguerEmitter: BurguerEmitterService, private cartService: CartService) { }
+  constructor(
+    public alertController: AlertController, 
+    private burguerEmitter: BurguerEmitterService, 
+    private cartService: CartService
+  ) { }
 
   ngOnInit() {
   }

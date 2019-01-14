@@ -9,8 +9,8 @@
       <ion-text class="heading-price">
         {{burguer.price | currency: 'USD' }}
       </ion-text>
-      <div *ngIf="burguer.category" class="burguer-badge padding-tiny" [style.background-color]="burguer.category.color">
-        <span [style.color]="burguer.category.font_color" [style.font-size.rem]="0.8" [style.font-weight]="'bold'">{{
+      <div *ngIf="burguer.category" class="burguer-badge padding-tiny bold" [style.background-color]="burguer.category.color">
+        <span [style.color]="burguer.category.font_color" [style.font-size.rem]="0.8">{{
           burguer.category.ds_category }}</span>
       </div>
     </ion-col>
@@ -28,7 +28,7 @@
       <ion-text>{{burguer.description}}</ion-text>
     </ion-col>
     <ion-col size="12" align-self-end>
-      <div class="display-flex" justify-content-end>
+      <div class="action-icons-container" justify-content-end>
         <ion-icon class="action-icons" (click)="sendToCart()" src="assets/custom-ion-icons/shopping-cart.svg"></ion-icon>
       </div>
     </ion-col>

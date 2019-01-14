@@ -33,13 +33,19 @@
 }
 
 .burguer-item-expanded-container {
-    border-radius: 0 0 5px 5px;    
+    border-radius: 0 0 5px 5px;
+    position: relative;    
     
-    .action-icons {
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding: 0.5rem;
-        transition: 0.15s ease-out;
-        border-radius: 50%;
+    .action-icons-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        .action-icons {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 0.5rem;
+            transition: 0.15s ease-out;
+            border-radius: 50%;
+        }
     }
 }

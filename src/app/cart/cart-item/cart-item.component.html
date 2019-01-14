@@ -1,7 +1,8 @@
 <div @onClose *ngIf="isShown" margin-bottom>
   <div class="cart-item__container margin-slim">
-    <div class="padding-slim cart-item__title-container">
-      <ion-text class="cart-item__title">{{cartItem.name}}</ion-text>
+    <div class="padding-slim cart-item__title-container display-flex" justify-content-between [style.background-color]="cartItem.category.color">
+      <ion-text class="cart-item__title" [style.color]="cartItem.category.font_color">{{cartItem.name}}</ion-text>
+      <ion-text [style.font-size.rem]="0.8" align-self-center [style.color]="cartItem.category.font_color" class="bold">{{cartItem.category.ds_category}}</ion-text>
     </div>
     <ion-thumbnail class="cart-item__image-container">
       <ion-img *ngIf="cartItem.img" class=".cart-item__image" src="{{cartItem.img}}"></ion-img>

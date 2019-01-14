@@ -5,6 +5,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { config } from '../../config';
+import { Storage } from '@ionic/storage';
+
+const FILTER_KEY = 'burguerFilter'
 
 @Injectable()
 export class BurguersService {
@@ -13,24 +16,30 @@ export class BurguersService {
     };
     baseUrl: string = config.getApiAddress() + '/api/burguers';
 
+    constructor(private http: HttpClient, private storage: Storage) { }
 
-    constructor(private http: HttpClient) { }
-
-    getBurguers(filter?: string, page?: number, pageSize?: number): Observable<Burguer[]> {
-        const urlEncoded = config.urlencode({ filter, page, pageSize });
+    getBurguers(filter?: any, page?: number, pageSize?: number): Observable<Burguer[]> {
+        const urlEncoded = config.urlencode({ ...filter, page, pageSize });
         const queryString = urlEncoded != "" ? `?${urlEncoded}` : '';
         let url = this.baseUrl + queryString;
         return this.http.get<Burguer[]>(url, this.httpOptions);
     }
 
-    addBurguer(burguer: Burguer): Observable<Burguer> {
-        return this.http.post(this.baseUrl, burguer, this.httpOptions);
+    setFilter(filter: any): Promise<void> {
+        return this.storage.set(FILTER_KEY, { ...filter });
+    }
+
+    getFilter(): Promise<any> {
+        return this.storage.get(FILTER_KEY);
+    }
+
+    removeFilter(): Promise<void> {
+        return this.storage.remove(FILTER_KEY);
     }
 }
 
 @Injectable()
 export class BurguersResolver implements Resolve<Burguer[]> {
-
     constructor(private service: BurguersService) {
 
     }
@@ -41,7 +50,8 @@ export class BurguersResolver implements Resolve<Burguer[]> {
     ): Promise<Burguer[]> {
         return new Promise(async (resolve, reject) => {
             try {
-                this.service.getBurguers()
+                const filter = await this.service.getFilter();
+                this.service.getBurguers(filter)
                     .pipe(catchError(e => { throw (e) }))
                     .subscribe(response => {
                         resolve(response)
