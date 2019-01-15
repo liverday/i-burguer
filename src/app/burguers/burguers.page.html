@@ -8,14 +8,22 @@
 </ion-header>
 <ion-toolbar>
   <ion-buttons slot="primary">
+
+    <ion-button (click)="presentOrderByAlert()">
+      <ion-icon name="list"></ion-icon>
+    </ion-button>
+    <ion-button (click)="changeDirection('desc')" *ngIf="direction === 'asc'">
+      <ion-icon name="arrow-dropup"></ion-icon>
+    </ion-button>
+    <ion-button (click)="changeDirection('asc')" *ngIf="direction === 'desc'">
+      <ion-icon name="arrow-dropdown"></ion-icon>
+    </ion-button>
     <ion-button (click)="openFilterModal()">
-      <ion-icon src="assets/custom-ion-icons/filter.svg"></ion-icon>
+      <ion-icon name="funnel"></ion-icon>
     </ion-button>
   </ion-buttons>
   <ion-searchbar animated [debounce]="500" [(ngModel)]="searchText" (ionChange)="onSearchBarChanged()"></ion-searchbar>
 </ion-toolbar>
-
-
 
 <ion-content padding>
   <burguer-list [burguers]="burguers"></burguer-list>

@@ -18,8 +18,8 @@ export class BurguersService {
 
     constructor(private http: HttpClient, private storage: Storage) { }
 
-    getBurguers(filter?: any, page?: number, pageSize?: number): Observable<Burguer[]> {
-        const urlEncoded = config.urlencode({ ...filter, page, pageSize });
+    getBurguers(filter?: any, page?: number, pageSize?: number, orderBy?: string, direction?: string): Observable<Burguer[]> {
+        const urlEncoded = config.urlencode({ ...filter, page, pageSize, orderBy, direction });
         const queryString = urlEncoded != "" ? `?${urlEncoded}` : '';
         let url = this.baseUrl + queryString;
         return this.http.get<Burguer[]>(url, this.httpOptions);
