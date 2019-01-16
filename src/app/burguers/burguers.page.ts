@@ -52,7 +52,7 @@ export class BurguersPage {
         this.page++;
         try {
             const filter = await this.service.getFilter();
-            this.service.getBurguers({ ...filter, name: this.searchText }, this.page, this.pageSize)
+            this.service.getBurguers({ ...filter, name: this.searchText }, this.page, this.pageSize, this.orderBy, this.direction)
                 .pipe(catchError(e => { throw e }))
                 .subscribe((response: Burguer[]) => {
                     if (response.length > 0) {

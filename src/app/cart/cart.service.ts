@@ -31,7 +31,7 @@ export class CartService {
 
                 if (!found.qtty)
                     found.qtty = 0;
-                
+
                 found.qtty++;
                 this.storage.set(CART_KEY, cartItems);
                 return 'updated';
@@ -67,20 +67,21 @@ export class CartService {
     }
 
     addQttyById = async (id: number): Promise<void> => {
-        let found = await this.findItemById(id)
+        let cartItems = await this.getCartItems();
+        let found = cartItems.find(it => it.id === id);
         if (found)
             found.qtty++;
+
+        return this.storage.set(CART_KEY, cartItems);
     }
 
     decQttyById = async (id: number): Promise<void> => {
-        let found = await this.findItemById(id)
+        let cartItems = await this.getCartItems();
+        let found = cartItems.find(it => it.id === id);
         if (found)
             found.qtty--;
-    }
 
-    private findItemById = async (id: number): Promise<CartItem> => {
-        let cartItems = await this.getCartItems();
-        return cartItems.find(item => item.id === id)
+        return this.storage.set(CART_KEY, cartItems);
     }
 }
 
@@ -118,7 +119,7 @@ export class CartCountResolver implements Resolve<number> {
             try {
                 let cartItems = await this.service.getCartItems();
                 if (!cartItems) resolve(0);
-                
+
                 resolve(cartItems.length);
             } catch (e) {
                 reject(e);

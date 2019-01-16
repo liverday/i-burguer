@@ -7,11 +7,15 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-text *ngIf="cart.items.length === 0">
-    <h2>Your cart is empty, buy something!</h2>
-  </ion-text>
+  <ng-template #empty>
+    <ion-text>
+      <h2>Your cart is empty, buy something!</h2>
+    </ion-text>
+  </ng-template>
 
-  <cart-item *ngFor="let item of cart.items" [cartItem]="item" (onRemove)="handleItemRemove($event)" (onQttyChange)="calculateTotal()" ></cart-item>
+  <div *ngIf="cart.items.length > 0; else empty">
+    <cart-item *ngFor="let item of cart.items" [cartItem]="item" (onRemove)="handleItemRemove($event)" (onQttyChange)="calculateTotal()"></cart-item>
+  </div>
 </ion-content>
 
 <ion-footer no-shadow>

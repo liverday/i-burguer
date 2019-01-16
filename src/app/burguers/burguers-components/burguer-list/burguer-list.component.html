@@ -1,3 +1,10 @@
 <ion-grid no-padding>
-  <burguer-item *ngFor="let burguer of burguers" (toggleChange)="onToggleChange($event)" [burguer]="burguer"></burguer-item>
+  <ng-template #empty>
+    <ion-text>
+      <h3>Oops... We don't found any burguers with that filter, try another one!</h3>
+    </ion-text>
+  </ng-template>
+  <div *ngIf="burguers.length > 0; else empty">
+    <burguer-item *ngFor="let burguer of burguers" (toggleChange)="onToggleChange($event)" [burguer]="burguer"></burguer-item>
+  </div>
 </ion-grid>
